@@ -1,0 +1,24 @@
+.wal_fleft { float: left }
+.wal_fright { float: right }
+.wal_cboth { clear: both }
+.wal_half { display: block; width: 49%; margin: 0; padding: 0; }
+.wal_center { text-align: center }
+
+.wal_div_link {  }
+.wal_div_bg {  }
+.wal_div_css { padding-top: 10px; }
+.description { color: #999 }
+.wal_widget_link, .widget_link_bg, .wal_widget_link_css { width: 90% }
+.wal_div .dashicons, .wal_div_css b { width: 7%; margin: 5px 5px 0 0 }
+.wal_div_bg img { max-width: 100%; height: auto }
+
+.wal_div {  }
+.wal_div label {  }
+.wal_div input[type=text] {
+  border: 0;
+  background-color: transparent;
+  border-bottom: 1px solid #f34379;
+  color: #444;
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.07);
+  box-shadow: inset 1px 0 0 rgba(0,0,0,.07);
+}

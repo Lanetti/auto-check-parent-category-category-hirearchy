@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Parent Category AutoCheck + Category Tree Checklist
-Version: 1.2.1
+Version: 1.2.2
 Description: Preserves the category hierarchy on the post editing screen + Check Parent Automatically + Auto scroll to first checked
 Author: Elsama
 Author URI: https://lafu.fi
@@ -43,7 +43,21 @@ class Lafu_Category_Checklist {
                         });
                     }
                 }
-                $(document).ready(updateCategoryChecklist);
+                
+                function autoCheckParent() {
+                    $('.categorychecklist input[type=checkbox]').on('change', function() {
+                        if ($(this).is(':checked')) {
+                            $(this).parents('li').each(function() {
+                                $(this).children('label').find('input[type=checkbox]').prop('checked', true);
+                            });
+                        }
+                    });
+                }
+                
+                $(document).ready(function() {
+                    updateCategoryChecklist();
+                    autoCheckParent();
+                });
             })(jQuery);
         </script>
         <?php

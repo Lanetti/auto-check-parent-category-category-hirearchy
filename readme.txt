@@ -1,98 +1,93 @@
-=== Parent Category AutoCheck + Category Tree Checklist  ===
-Contributors: EviLex
-Author: EviLex
-Author URI: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLHFMF373Z9GG&source=url
-Plugin URI: https://wordpress.org/plugins/yummi-auto-check-parent-category-category-tree-checklist/
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLHFMF373Z9GG&source=url
-Tags: cms, admin, ui, taxonomy, category, categories, check, checklist, hierarchy, parent, post, posts, acf, cpt, advanced, custom, bulk, gutenberg
-Requires at least: 3.3
-Tested up to: 5.2
-Stable tag: 1.1.8
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+# Parent Category AutoCheck + Category Tree Checklist  
 
-Preserves the category hierarchy on the post editing screen + Check Parent Automatically + Auto scroll to first checked + Collapse parents
+**Contributors:** Elsama  
+**Author:** Elsama  
+**Author URI:** [https://lafu.fi](https://lafu.fi)  
+**Plugin URI:** [https://lafu.fi/plugins/parent-category-autocheck](https://lafu.fi/plugins/parent-category-autocheck)  
+**Donate link:** [https://lafu.fi/donate](https://lafu.fi/donate)  
+**Tags:** cms, admin, ui, taxonomy, category, categories, check, checklist, hierarchy, parent, post, posts, acf, cpt, advanced, custom, bulk, gutenberg  
+**Requires at least:** 3.3  
+**Tested up to:** 6.x  
+**Stable tag:** 1.1.8  
+**License:** GPLv2 or later  
+**License URI:** [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)  
 
-== Description ==
+Preserves the category hierarchy on the post editing screen + Check Parent Automatically + Auto scroll to first checked + Collapse parents  
 
-1. This plugin Automatically Check Parent Category.
+## Description  
 
-2. When you on the post editing screen, after saving a post, you will notice that the checked categories are displayed on top, breaking the category hierarchy. This plugin removes that "feature".
+- **Automatically checks the parent category** when a child category is selected.  
+- Restores the **native category hierarchy** in the WordPress post editor by preventing checked categories from floating to the top.  
+- **Synchronizes category selections in Advanced Custom Fields (ACF).**  
+- **Auto-scrolls** to the first checked category for better navigation.  
+- **Collapsible parent categories** for a cleaner UI.  
+- **Bulk edit support** for efficient category management.  
+- Fully compatible with the **Gutenberg editor**.  
 
-3. Synchronously allocate categories in ACF
+This plugin also supports **Custom Taxonomies**.  
 
-4. Also, it automatically scrolls to the first checked category.
+## Changelog  
 
-5. Collapse parents
+### v1.1.8  
+- Improved compatibility with **Gutenberg**.  
+- Minor bug fixes.  
 
-6. Bulk edit support
+### v1.1.7  
+- Fixed **Allow UnCheck Parents** feature.  
 
-7. Support Gutenberg Editor
+### v1.1.6  
+- Improved functionality with the **Gutenberg editor**.  
+- Fixed conflicts with the **Post Expiration** plugin.  
 
-Plugin works with Custom Taxonomies too.
+### v1.1.5  
+- Fixed an issue when clicking the **Options** button.  
 
-== Changelog ==
+### v1.1.4  
+- Added **support for Right-To-Left (RTL) languages** like Arabic.  
 
-= 1.1.8 =
-* New checking for Gutenberg
-* Fix some bugs
+### v1.1.3  
+- **Gutenberg editor compatibility update**.  
 
-= 1.1.7 =
-* Fixed "Allow UnCheck Parents"
+### v1.1.2  
+- **Bulk edit support added**.  
 
-= 1.1.6 =
-* Better work with Gutenberg editor
-* Fixed conflict with "Post Expiration" plugin
+### v1.1.1  
+- **Yoast SEO compatibility fix**.  
 
-= 1.1.5 =
-* Fixed when Options button clicked
+### v1.1.0  
+- Added **collapsible parent categories**.  
 
-= 1.1.4 =
-* Adding support for language written in a Right-To-Left (RTL) languages (like Arabic)
+### v1.0.10  
+- Minor bug fix.  
 
-= 1.1.3 =
-* Added compatibility with Gutenberg editor
+### v1.0.9  
+- **Rewritten category check script** for better performance.  
+- Added support for **WordPress 5+**.  
 
-= 1.1.2 =
-* Add bulk edit support
+### v1.0.8  
+- Multiple improvements and optimizations.  
 
-= 1.1.1 =
-* Yoast SEO fix
+### v1.0.7  
+- Fixed various errors.  
+- Added **synchronous category allocation in ACF**.  
 
-= 1.1.0 =
-* Add collapse parent
+### v1.0.6  
+- Fixed a PHP notice issue affecting **Query Monitor**.  
 
-= 1.0.10 =
-* Fixed one error
+### v1.0.4  
+- Minor UI improvement on the settings page.  
 
-= 1.0.9 =
-* Rewrite category check script
-* Add support Wordpress 5
+### v1.0.3  
+- Bug fix.  
 
-= 1.0.8 =
-* Many changes
+### v1.0.2  
+- Added **Third, Fourth, and Fifth category inclusion levels**.  
+- Added **AutoCheck for ACF category taxonomies**.  
+- Introduced an **Options Page under Lafu Plugins**.  
+- Added toggle to allow or disable **UnCheck Main Category**.  
 
-= 1.0.7 =
-* Fixed some errors
-* Added "Synchronously allocate categories in ACF"
+### v1.0.1  
+- Minor fix.  
 
-= 1.0.6 =
-* Fix "php Notice in Query Monitor (slows down all pages)". Thx @optimizewordpress
-
-= 1.0.4 =
-* Hide one notify on settings page
-
-= 1.0.3 =
-* Fix one error
-
-= 1.0.2 =
-* Added Third, Fourth, Fifth category include levels
-* Added autocheck to category taxonomy for Advanced Custom Fields
-* Added Options page under Yummi Plugins
-* Added allow to UnCheck Main one: Enable/Disable
-
-= 1.0.1 =
-* Simple Fix
-
-= 1.0 =
-* Stable releace
+### v1.0  
+- **Stable release**.  

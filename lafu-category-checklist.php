@@ -3,13 +3,14 @@
 Plugin Name: Parent Category AutoCheck + Category Tree Checklist
 Version: 1.1.8
 Description: Preserves the category hierarchy on the post editing screen + Check Parent Automatically + Auto scroll to first checked
-Author: Alex Egorov
-Author URI: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLHFMF373Z9GG&source=url
-Plugin URI: https://wordpress.org/plugins/yummi-auto-check-parent-category-category-tree-checklist/
+Author: Elsama
+Author URI: https://lafu.fi
+Plugin URI: https://lafu.fi/plugins/parent-category-autocheck
 License: GPLv2 or later (license.txt)
 Text Domain: cchl
 Domain Path: /languages
 */
+
 
 define('cchl_URL', plugins_url( '/', __FILE__ ) );
 define('cchl_PATH', plugin_dir_path(__FILE__) );
@@ -86,11 +87,11 @@ function ycc_recursive($array, $type = 'term_id', $parent = 0, $nbsp = ''){
 	}
 }
 
-class Yummi_Category_Checklist {
+class lafui_Category_Checklist {
 
 	static function init() {
-		add_filter( 'wp_terms_checklist_args', array( __CLASS__, 'yummi_checklist_args' ) );
-		add_filter( 'allowed_block_types', array( __CLASS__, 'yummi_gutenberg_checklist_args' ) );
+		add_filter( 'wp_terms_checklist_args', array( __CLASS__, 'lafui_checklist_args' ) );
+		add_filter( 'allowed_block_types', array( __CLASS__, 'lafui_gutenberg_checklist_args' ) );
 		//if( function_exists( 'is_gutenberg_page' ) && is_gutenberg_page() )
 
     // global $current_screen;
@@ -100,22 +101,22 @@ class Yummi_Category_Checklist {
     // }
 	}
 
-	static function yummi_checklist_args( $args ) {
+	static function lafui_checklist_args( $args ) {
 		add_action( 'admin_footer', array( __CLASS__, 'script' ) );
 		$args['checked_ontop'] = false;
 		return $args;
 	}
 
-	static function yummi_gutenberg_checklist_args( $args ) {
+	static function lafui_gutenberg_checklist_args( $args ) {
 		add_action( 'admin_footer', array( __CLASS__, 'script' ) );
 		return $args;
 	}
 
-	static function yummi_plugins() {
+	static function lafui_plugins() {
 		if(!is_admin() || !current_user_can("manage_options"))
-			die( 'yummi-oops' );
-		if(!function_exists('yummi_plugins'))
-			include_once( $this->path . '/includes/yummi-plugins.php' );
+			die( 'lafui-oops' );
+		if(!function_exists('lafui_plugins'))
+			include_once( $this->path . '/includes/lafui-plugins.php' );
 	}
 
 	static function script() {
@@ -389,17 +390,17 @@ class Yummi_Category_Checklist {
 	}
 	static function admin_menu() {
 		/*add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );*/
-		if( empty( $GLOBALS['admin_page_hooks']['yummi']) )
-			$main_page = add_menu_page( 'yummi', 'Yummi '.__('Plugins'), 'manage_options', 'yummi', array($this, 'yummi_plugins'), $this->url.'/includes/img/dashicons-yummi.png' );
+		if( empty( $GLOBALS['admin_page_hooks']['lafui']) )
+			$main_page = add_menu_page( 'lafui', 'lafui '.__('Plugins'), 'manage_options', 'lafui', array($this, 'lafui_plugins'), $this->url.'/includes/img/dashicons-lafui.png' );
 		/*add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );*/
-		//$main_page = add_submenu_page( 'yummi','yummicategory', __('Yummi Category Checklist','cchl'), 'manage_options', 'yummicategory', array( $this, 'options_do_page')  );
+		//$main_page = add_submenu_page( 'lafui','lafuicategory', __('lafui Category Checklist','cchl'), 'manage_options', 'lafuicategory', array( $this, 'options_do_page')  );
 
 		//add_action( 'admin_print_styles-' . $main_page, array(&$this, 'admin_page_styles') );
 		//add_action( 'admin_print_scripts-'. $main_page, array(&$this, 'admin_page_scripts') );
-		//register_setting('yummicategory', $this->option_name, array($this, 'validate'));
+		//register_setting('lafuicategory', $this->option_name, array($this, 'validate'));
 	}
 }
-Yummi_Category_Checklist::init();
+lafui_Category_Checklist::init();
 
 /* Multiplugin functions */
 if(!function_exists('wp_get_current_user'))
@@ -408,13 +409,13 @@ if(!function_exists('wp_get_current_user'))
 /* Красивая функция вывода масивов */
 if (!function_exists('prr')){ function prr($str) { echo "<pre>"; print_r($str); echo "</pre>\r\n"; } }
 
-if( isset($_REQUEST['page']) && $_REQUEST['page'] == 'yummi' && !function_exists('yummi_register_settings') || isset($_REQUEST['page']) && $_REQUEST['page'] == 'cchl' && !function_exists('yummi_register_settings') ){ /* Filter pages */
-	add_action( 'admin_init', 'yummi_register_settings' );
-	function yummi_register_settings() {
+if( isset($_REQUEST['page']) && $_REQUEST['page'] == 'lafui' && !function_exists('lafui_register_settings') || isset($_REQUEST['page']) && $_REQUEST['page'] == 'cchl' && !function_exists('lafui_register_settings') ){ /* Filter pages */
+	add_action( 'admin_init', 'lafui_register_settings' );
+	function lafui_register_settings() {
 		$url = plugin_dir_url( __FILE__ );
 		//register_setting( 'cchl_admin_menu', 'cchl', 'cchl_validate_options' );
-		wp_enqueue_style( 'yummi-style', $url . '/css/admin_style.min.css' );
-		wp_enqueue_style( 'yummi-hint', $url . '/css/hint.min.css' );
+		wp_enqueue_style( 'lafui-style', $url . '/css/admin_style.min.css' );
+		wp_enqueue_style( 'lafui-hint', $url . '/css/hint.min.css' );
 
 		if ( !current_user_can('manage_options') )
 			wp_die(__('Sorry, you are not allowed to install plugins on this site.'));
@@ -423,14 +424,14 @@ if( isset($_REQUEST['page']) && $_REQUEST['page'] == 'yummi' && !function_exists
 
 add_action('admin_menu', 'cchl_admin_menu');
 function cchl_admin_menu() {
-	if( empty( $GLOBALS['admin_page_hooks']['yummi']) )
-		add_menu_page( 'yummi', 'Yummi '.__('Plugins'), 'manage_options', 'yummi', 'yummi_plugins_cchl', cchl_URL.'/includes/img/dashicons-yummi.png' );
+	if( empty( $GLOBALS['admin_page_hooks']['lafui']) )
+		add_menu_page( 'lafui', 'lafui '.__('Plugins'), 'manage_options', 'lafui', 'lafui_plugins_cchl', cchl_URL.'/includes/img/dashicons-lafui.png' );
 
 	/*add_submenu_page( parent_slug, page_title, menu_title, rights(user can manage_options), menu_slug, function ); */
-	add_submenu_page('yummi', __('Category AutoCheck','cchl'), __('Category AutoCheck','cchl'), 'manage_options', 'category_autocheck', 'category_autocheck_options_page');
+	add_submenu_page('lafui', __('Category AutoCheck','cchl'), __('Category AutoCheck','cchl'), 'manage_options', 'category_autocheck', 'category_autocheck_options_page');
 }
 
-function yummi_plugins_cchl() { if(!function_exists('yummi_plugins')) include_once( cchl_PATH . '/includes/yummi-plugins.php' ); }
+function lafui_plugins_cchl() { if(!function_exists('lafui_plugins')) include_once( cchl_PATH . '/includes/lafui-plugins.php' ); }
 
 function category_autocheck_options_page() {
 
@@ -474,7 +475,7 @@ function category_autocheck_options_page() {
 	<div class="wrap">
 
 		<?php screen_icon(); echo "<h1>" . __('Parent Category AutoCheck Plugin', 'cchl') .' '. __( 'Settings' ) . "</h1>"; ?>
-		<div style='float:right;margin-top: -27px;'><span style="font-size:1.3em">&starf;</span> <a href="https://wordpress.org/support/plugin/yummi-auto-check-parent-category-category-tree-checklist/reviews/#new-post" target="_blank"><?php _e('Rate','cchl')?></a> &ensp; ❤ <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLHFMF373Z9GG&source=url" target="_blank"><?php _e('Donate', 'cchl')?></a></div>
+		<div style='float:right;margin-top: -27px;'><span style="font-size:1.3em">&starf;</span> <a href="https://wordpress.org/support/plugin/lafui-auto-check-parent-category-category-tree-checklist/reviews/#new-post" target="_blank"><?php _e('Rate','cchl')?></a> &ensp; ❤ <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLHFMF373Z9GG&source=url" target="_blank"><?php _e('Donate', 'cchl')?></a></div>
 
 		<form method="post" action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>">
 
@@ -544,7 +545,7 @@ function category_autocheck_options_page() {
 
 <?php }
 
-function yummi_cc_plugin_action_links($links, $file) {
+function lafui_cc_plugin_action_links($links, $file) {
     static $this_plugin;
     if (!$this_plugin) {
         $this_plugin = plugin_basename(__FILE__);
@@ -556,4 +557,4 @@ function yummi_cc_plugin_action_links($links, $file) {
     }
     return $links;
 }
-add_filter('plugin_action_links', 'yummi_cc_plugin_action_links', 10, 2);
+add_filter('plugin_action_links', 'lafui_cc_plugin_action_links', 10, 2);
